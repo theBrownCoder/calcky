@@ -18,6 +18,8 @@ const addition = '+';
 const subtraction = '-';
 const multiplication = '*';
 const division = '/';
+const equals = '=';
+const equals2 = 'Enter';
 
 // Addition
 function add(num1, num2) {
