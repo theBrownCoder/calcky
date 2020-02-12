@@ -1,0 +1,59 @@
+:root {
+    /* Colors */
+    --background-main: #fefffe;
+    --background-console: #456990;
+    --input-cursor: #381d2a;
+    --input-area: #8b907e;
+    --input-text: #dff2d8;
+    --input-operator-text: #273043;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--background-console);
+}
+
+/* Keypad */
+.keypad {}
+
+/* Number keys */
+#one-key {}
+
+#two-key {}
+
+#three-key {}
+
+#four-key {}
+
+#five-key {}
+
+#six-key {}
+
+#seven-key {}
+
+#eight-key {}
+
+#nine-key {}
+
+#ten-key {}
+
+#decimal-key {}
+
+#equals-key {}
+
+/* Operator Keys */
+
+#divide-key {}
+
+#multiply-key {}
+
+#subtraction-key {}
+
+#addition-key {}
+
+#backspace-key {}
