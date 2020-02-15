@@ -1,6 +1,6 @@
 :root {
     /* Colors */
-    --background-main: #fefffe;
+    --background-main: #222c28;
     --background-console: #456990;
     --keypad: #7791ae;
     --keypad_2: #576a7f;
@@ -30,9 +30,10 @@ body {
 
 #calculator {
     background-color: var(--background-console);
+    border: 4px var(--clear-key_2) solid;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-bottom: 20%;
     width: 500px;
     height: 700px;
@@ -52,13 +53,21 @@ input {
 }
 
 #input-text-area {
+    position: relative;
     background-color: var(--input-text-background);
     color: var(--input-text_2);
-    font-size: 100px;
+    border: 4px var(--keypad_2) solid;
+    font-size: 8ch;
     text-align: right;
-    
-    width: 500px;
+    width: 493px;
     height: 150px;
+}
+
+#input-span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: .25ch;
 }
 
 #input-clear-key {
