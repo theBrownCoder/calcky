@@ -110,13 +110,21 @@ input {
 #eight-key,
 #nine-key,
 #zero-key,
-#decimal-key,
-#equals-key {
+#decimal-key {
     display: inline-block;
     background-color: transparent;
     font-size: xx-large;
     width: 124px;
     height: 124px;
+}
+
+#equals-key {
+    width: 124px;
+    height: 124px;
+    font-size: xx-large;
+    display: inline-block;
+    background-color: var(--clear-key_1);
+
 }
 
 /* Number Keys Hover */
@@ -130,9 +138,12 @@ input {
 #eight-key:hover,
 #nine-key:hover,
 #zero-key:hover,
-#decimal-key:hover,
-#equals-key:hover {
+#decimal-key:hover {
     background-color: var(--keypad_2);
+}
+
+#equals-key:hover {
+    background-color: var(--clear-key_2);
 }
 
 /* Operator Keys */
