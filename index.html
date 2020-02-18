@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcky</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="scripts/main.js"></script>
+    <!-- <script src="scripts/main.js"></script> -->
 </head>
 
 <body>
@@ -14,41 +14,41 @@
         <div id="calculator">
             <div id="input-area">
                 <div id="input-text-area">
-                    <span id="input-span">98856776</span>
+                    <span id="input-span"></span>
                 </div>
             </div>
             <div>
-                <input type="button" value="Clear" id="input-clear-key">
+                <button id="data-input-clear-key">C</button>
             </div>
             <div class="button-area">
                 <div id="keypad">
 
                     <div id="keypad-group">
-                        <div><input type="button" value="1" id="one-key"></div>
-                        <div><input type="button" value="2" id="two-key"></div>
-                        <div><input type="button" value="3" id="three-key"></div>
-                        <div><input type="button" value="/" id="divide-key"></div>
+                        <div class="numpad-button"><button id="one-key">1</button></div>
+                        <div class="numpad-button"><button id="two-key">2</button></div>
+                        <div class="numpad-button"><button id="three-key">3</button></div>
+                        <div class="numpad-button"><button id="divide-key">/</button></div>
                     </div>
 
                     <div id="keypad-group">
-                        <div><input type="button" value="4" id="four-key"></div>
-                        <div><input type="button" value="5" id="five-key"></div>
-                        <div><input type="button" value="6" id="six-key"></div>
-                        <div><input type="button" value="x" id="multiply-key"></div>
+                        <div class="numpad-button"><button id="four-key">4</button></div>
+                        <div class="numpad-button"><button id="five-key">5</button></div>
+                        <div class="numpad-button"><button id="six-key">6</button></div>
+                        <div class="numpad-button"><button id="multiply-key">*</button></div>
                     </div>
 
                     <div id="keypad-group">
-                        <div><input type="button" value="7" id="seven-key"></div>
-                        <div><input type="button" value="8" id="eight-key"></div>
-                        <div><input type="button" value="9" id="nine-key"></div>
-                        <div><input type="button" value="+" id="addition-key"></div>
+                        <div class="numpad-button"><button id="seven-key">7</button></div>
+                        <div class="numpad-button"><button id="eight-key">8</button></div>
+                        <div class="numpad-button"><button id="nine-key">9</button></div>
+                        <div class="numpad-button"><button id="addition-key">+</button></div>
                     </div>
 
                     <div id="keypad-group">
-                        <div><input type="button" value="." id="decimal-key"></div>
-                        <div><input type="button" value="0" id="zero-key"></div>
-                        <div><input type="button" value="=" id="equals-key"></div>
-                        <div><input type="button" value="-" id="subtraction-key"></div>
+                        <div class="numpad-button"><button id="decimal-key">.</button></div>
+                        <div class="numpad-button"><button id="zero-key">0</button></div>
+                        <div class="op-button"><button id="equals-key">=</button></div>
+                        <div class="numpad-button"><button id="subtraction-key">-</button></div>
                     </div>
                 </div>
             </div>
@@ -57,5 +57,6 @@
 
 
 </body>
+<script src="scripts/main.js"></script>
 
 </html>
