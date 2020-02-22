@@ -5,12 +5,15 @@ const division = '/';
 const subtraction = '-';
 const multiplication = '*';
 const equal = '=';
+const decimal = '.';
 
 let firstNum = '';
 let secondNum = '';
 let sign = '';
 let usrInput = '';
 let op = '';
+let gotOperator = false;
+let gotDecimal = false;
 
 const display = document.querySelector('#input-span');
 const clear = document.querySelector(newFunction());
@@ -22,6 +25,8 @@ clear.addEventListener('click', e => {
   usrInput = '';
   firstNum = '';
   secondNum = '';
+  gotDecimal = false;
+  gotOperator = false;
 });
 equals.addEventListener('click', e => {
   operate(parseInt(firstNum), checkOperator(op), parseInt(secondNum));
@@ -30,21 +35,38 @@ equals.addEventListener('click', e => {
 digits.forEach(button => {
   button.addEventListener('click', e => {
     display.textContent = '';
-    usrInput = `${button.textContent}`;
-    if (firstNum.length > 0) {
-      if (isNaN(parseInt(usrInput))) {
+    if (gotOperator === false) {
+      if (
+        checkOperator(`${button.textContent}`) === addition ||
+        checkOperator(`${button.textContent}`) === multiplication ||
+        checkOperator(`${button.textContent}`) === subtraction ||
+        checkOperator(`${button.textContent}`) === division
+      ) {
         op = usrInput;
-        console.log(op);
-        display.textContent += op;
       } else {
-        secondNum = usrInput;
-        console.log(secondNum);
-        display.textContent += secondNum;
+        usrInput += `${button.textContent}`;
+        console.log(usrInput);
+        display.textContent = usrInput;
+        if (isNaN(parseInt(usrInput))) {
+          if (usrInput === decimal) {
+            gotDecimal = true;
+            usrInput += decimal;
+            display.textContent = usrInput;
+          } else {
+            gotOperator = true;
+            display.textContent = usrInput;
+            console.log(usrInput);
+          }
+        } else {
+          firstNum = usrInput;
+          console.log(firstNum);
+        }
       }
+    } else if (gotOperator === true) {
+      secondNum = usrInput;
+      console.log(secondNum);
     } else {
-      firstNum = usrInput;
-      console.log(firstNum);
-      display.textContent += firstNum;
+      console.log('Error.');
     }
   });
 });
@@ -112,6 +134,9 @@ function checkOperator(input) {
 
     case equal:
       return '=';
+
+    case decimal:
+      return '.';
     default:
       console.log('Operator could not be verified.');
   }
