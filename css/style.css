@@ -80,7 +80,7 @@ input {
     color: #fefffe;
 }
 
-#input-clear-key:hover {
+#data-input-clear-key:hover {
     background-color: var(--clear-key_2);
 }
 
