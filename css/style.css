@@ -1,5 +1,6 @@
 :root {
     /* Colors */
+    --default-button: #c2eabd;
     --background-main: #222c28;
     --background-console: #456990;
     --keypad: #7791ae;
@@ -115,14 +116,14 @@ input {
 #decimal-key,
 #equals-key {
     display: inline-block;
-    background-color: transparent;
+    background-color: var(--default-button);
     font-size: xx-large;
     width: 124px;
     height: 124px;
 }
 
 #equals-key {
-    background-color: var(--clear-key_1);
+    background-color: var(--default-button);
 }
 
 /* Number Keys Hover */
@@ -135,13 +136,19 @@ input {
 #seven-key:hover,
 #eight-key:hover,
 #nine-key:hover,
-#zero-key:hover,
-#decimal-key:hover {
+#zero-key:hover {
     background-color: var(--keypad_2);
+    color: var(--input-text);
+}
+
+#decimal-key:hover {
+    background-color: var(--clear-key_2);
+    color: var(--input-text);
 }
 
 #equals-key:hover {
     background-color: var(--clear-key_2);
+    color: var(--input-text);
 }
 
 /* Operator Keys */
