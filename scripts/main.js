@@ -25,6 +25,7 @@ let gotOperator = false;
 let gotDecimal = false;
 
 const display = document.querySelector('#input-span');
+const display_font = document.querySelector('#input-text-area');
 const clear = document.querySelector('#data-input-clear-key');
 const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
@@ -41,6 +42,7 @@ clear.addEventListener('click', e => {
   gotDecimal = false;
   dot.removeAttribute('disabled');
   dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
+  display_font.setAttribute('style', `${'font-size: 8ch;'}`);
   gotOperator = false;
 });
 
@@ -54,7 +56,7 @@ equals.addEventListener('click', e => {
 });
 digits.forEach(button => {
   button.addEventListener('click', e => {
-    // display.textContent = '';
+    checkOutputLength();
     usrInput = `${button.textContent}`;
     if (isNaN(parseFloat(usrInput))) {
       switch (usrInput) {
@@ -158,6 +160,7 @@ function operate(num1, op, num2) {
   switch (op) {
     case '+':
       answer = String(add(num1, num2));
+      checkAnswerLength();
       display.textContent = answer;
       console.log('And the answer is ' + answer);
       firstNum = answer;
@@ -210,4 +213,28 @@ function operate(num1, op, num2) {
       break;
   }
   firstNum = display.textContent;
+}
+
+function checkAnswerLength() {
+  if (answer.length > 9) {
+    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
+  }
+  if (display.textContent.length > 14) {
+    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
+  }
+  if (display.textContent.length > 20) {
+    display_font.setAttribute('style', `${'font-size: 2ch;'}`);
+  }
+}
+
+function checkOutputLength() {
+  if (display.textContent.length > 9) {
+    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
+  }
+  if (display.textContent.length > 14) {
+    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
+  }
+  if (display.textContent.length > 20) {
+    display_font.setAttribute('style', `${'font-size: 2ch;'}`);
+  }
 }
