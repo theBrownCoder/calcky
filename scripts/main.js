@@ -31,6 +31,15 @@ const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
 const dot = document.querySelector('#decimal-key');
 
+// TODO:
+// String several numbers and operators together in one statement and evaluate it.
+// Prevent equals key from being pressed until 2 numbers and at least one operator are entered.
+// Display an error message if a user tries to divide by 0. (Don't alow it.)
+// Fix fixed decimal output to occur only when a float is the answer.
+// Fix decimal key to allow for only one decimal per numbers.
+// Add a backspace key to allow the user to delete single or multiple numbers from the input field.
+// Add keyboard support
+
 // Clears input
 clear.addEventListener('click', e => {
   console.log('The display has been cleared.');
