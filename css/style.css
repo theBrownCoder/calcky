@@ -1,20 +1,20 @@
 :root {
     /* Colors */
-    --default-button: #c2eabd;
     --background-main: #222c28;
     --background-console: #456990;
-    --keypad: #7791ae;
-    --keypad_2: #576a7f;
-    --operator-keypad_1: #dda3b2;
-    --operator-keypad_2: #ba7e91;
+    --clear-key_1: #a04668;
+    --clear-key_2: #d7263d;
+    --default-button: #c2eabd;
     --input-cursor: #381d2a;
     --input-area: #8b907e;
     --input-text: #dff2d8;
     --input-text_2: #d3d57c;
     --input-text-background: #0c1713;
-    --clear-key_1: #a04668;
-    --clear-key_2: #d7263d;
     --input-operator-text: #273043;
+    --keypad: #7791ae;
+    --keypad_2: #576a7f;
+    --operator-keypad_1: #dda3b2;
+    --operator-keypad_2: #ba7e91;
 }
 
 html,
