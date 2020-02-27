@@ -72,16 +72,18 @@ input {
     margin-right: .25ch;
 }
 
-#data-input-clear-key {
+#data-input-clear-key,
+#data-input-backspace-key {
     background-color: var(--clear-key_1);
     height: 50px;
-    width: 500px;
+    width: 250px;
     font-size: xx-large;
     text-align: center;
     color: #fefffe;
 }
 
-#data-input-clear-key:hover {
+#data-input-clear-key:hover,
+#data-input-backspace-key:hover {
     background-color: var(--clear-key_2);
 }
 
