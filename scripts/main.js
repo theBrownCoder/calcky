@@ -34,7 +34,6 @@ const dot = document.querySelector('#decimal-key');
 // TODO:
 // String several numbers and operators together in one statement and evaluate it.
 // Prevent equals key from being pressed until 2 numbers and at least one operator are entered.
-// Display an error message if a user tries to divide by 0. (Don't alow it.)
 // Fix fixed decimal output to occur only when a float is the answer.
 // Fix decimal key to allow for only one decimal per numbers.
 // Add a backspace key to allow the user to delete single or multiple numbers from the input field.
@@ -161,9 +160,14 @@ function multiply(num1, num2) {
 
 // Division
 function divide(num1, num2) {
-  return (num1 / num2).toFixed(2);
+  if (num1 === 0 || num2 === 0) {
+    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
+    let emessage = (display.textContent = "YOU CAN'T DO THAT!!!");
+    return emessage;
+  } else {
+    return (num1 / num2).toFixed(2);
+  }
 }
-
 // Operation
 function operate(num1, op, num2) {
   switch (op) {
