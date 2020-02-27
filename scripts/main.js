@@ -23,10 +23,12 @@ let usrInput = '';
 let op = '';
 let gotOperator = false;
 let gotDecimal = false;
+let backedOut = false;
 
 const display = document.querySelector('#input-span');
 const display_font = document.querySelector('#input-text-area');
 const clear = document.querySelector('#data-input-clear-key');
+const back = document.querySelector('#data-input-backspace-key');
 const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
 const dot = document.querySelector('#decimal-key');
@@ -38,6 +40,12 @@ const dot = document.querySelector('#decimal-key');
 // Fix decimal key to allow for only one decimal per numbers.
 // Add a backspace key to allow the user to delete single or multiple numbers from the input field.
 // Add keyboard support
+
+// Deletes one or multiple user input characters
+back.addEventListener('click', e => {
+  console.log('The backspace key has been pressed');
+  backedOut = true;
+});
 
 // Clears input
 clear.addEventListener('click', e => {
@@ -56,6 +64,7 @@ clear.addEventListener('click', e => {
 
 // Calculates a math problem
 equals.addEventListener('click', e => {
+  checkOutputLength();
   console.log('About to operate...');
   console.log('Equation: ' + firstNum + ' ' + op + ' ' + secondNum);
   operate(parseFloat(firstNum), op, parseFloat(secondNum));
