@@ -59,7 +59,7 @@ clear.addEventListener('click', e => {
   gotDecimal = false;
   dot.removeAttribute('disabled');
   dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
-  display_font.setAttribute('style', `${'font-size: 8ch;'}`);
+  display_font.setAttribute('style', `${'font-size: 10ch;'}`);
   gotOperator = false;
 });
 
@@ -362,24 +362,24 @@ function operate(num1, op, num2) {
 
 function checkAnswerLength() {
   if (answer.length > 9) {
-    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 8ch;'}`);
   }
   if (display.textContent.length > 14) {
-    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
   }
   if (display.textContent.length > 20) {
-    display_font.setAttribute('style', `${'font-size: 2ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
   }
 }
 
 function checkOutputLength() {
   if (display.textContent.length > 9) {
-    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 8ch;'}`);
   }
   if (display.textContent.length > 14) {
-    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 6ch;'}`);
   }
   if (display.textContent.length > 20) {
-    display_font.setAttribute('style', `${'font-size: 2ch;'}`);
+    display_font.setAttribute('style', `${'font-size: 4ch;'}`);
   }
 }
