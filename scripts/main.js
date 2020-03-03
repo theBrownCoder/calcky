@@ -38,13 +38,7 @@ equals.setAttribute('style', `${'background-color: var(--keypad_2);'}`);
 
 // TODO:
 // String several numbers and operators together in one statement and evaluate it.
-// Prevent equals key from being pressed until 2 numbers and at least one operator are entered.
-// Fix fixed decimal output to occur only when a float is the answer.
-// Fix decimal key to allow for only one decimal per number.
-// Add a backspace key to allow the user to delete single or multiple numbers from the input field.
 // Add keyboard support
-
-// Deletes one or multiple user input characters
 
 // Clears input
 clear.addEventListener('click', e => {
