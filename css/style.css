@@ -26,7 +26,8 @@ body {
 
 body {
     background-color: var(--background-main);
-    font-family: 'Segment7', standard;
+    font-family: 'Pocket Calculator', regular;
+    /* font-family: 'Segment7', standard; */
 }
 
 #calculator {
