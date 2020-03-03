@@ -41,23 +41,104 @@ const dot = document.querySelector('#decimal-key');
 // Add keyboard support
 
 // Deletes one or multiple user input characters
+
+// Clears input
+clear.addEventListener('click', e => {
+  console.log('The display has been cleared.');
+  equals.setAttribute('disabled', 'true');
+  equals.setAttribute('style', `${'background-color: var(--keypad_2);'}`);
+  display.textContent = '';
+  op = '';
+  usrInput = '';
+  firstNum = '';
+  secondNum = '';
+  gotDecimal = false;
+  dot.removeAttribute('disabled');
+  dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
+  display_font.setAttribute('style', `${'font-size: 8ch;'}`);
+  gotOperator = false;
+});
+
+// Backspace button
 backspace.addEventListener('click', e => {
   console.log('The backspace key has been pressed');
   // check for operator first,
   if (gotOperator === true) {
     //reduce the secondNum variable by 1 character
-    let dummyNum = secondNum.slice(0, secondNum.length - 1);
-    if (secondNum.length === 1) {
-      dummyNum = '0';
-      secondNum = dummyNum;
-      console.log('Second Dummy Number: ' + dummyNum);
-      display.textContent = dummyNum;
-    } else {
-      console.log('Second Dummy Number: ' + dummyNum);
+    if (isNaN(parseFloat(usrInput))) {
+      let dummyOperator = usrInput;
+      let dummyNum = ' ';
+      switch (dummyOperator) {
+        case '+':
+          gotOperator = false;
+          op = '';
+          dummyNum = display.textContent.slice(
+            0,
+            display.textContent.length - 1,
+          );
+          display.textContent = dummyNum;
+          console.log(display.textContent);
+          break;
+        case '-':
+          gotOperator = false;
+          op = '';
+          dummyNum = display.textContent.slice(
+            0,
+            display.textContent.length - 1,
+          );
+          display.textContent = dummyNum;
+          console.log(display.textContent);
+          break;
 
-      secondNum = dummyNum;
-      console.log('New Number: ' + secondNum);
-      display.textContent = secondNum;
+        case '*':
+          gotOperator = false;
+          op = '';
+          dummyNum = display.textContent.slice(
+            0,
+            display.textContent.length - 1,
+          );
+          display.textContent = dummyNum;
+          console.log(display.textContent);
+          break;
+        case '/':
+          gotOperator = false;
+          op = '';
+          dummyNum = display.textContent.slice(
+            0,
+            display.textContent.length - 1,
+          );
+          display.textContent = dummyNum;
+          console.log(display.textContent);
+          break;
+
+        case '.':
+          gotDecimal = false;
+          dummyNum = display.textContent.slice(
+            0,
+            display.textContent.length - 1,
+          );
+          display.textContent = dummyNum;
+          console.log(display.textContent);
+          break;
+
+        default:
+          console.log('Error.');
+          break;
+      }
+    } else {
+      let dummyNum = secondNum.slice(0, secondNum.length - 1);
+      if (secondNum.length === 1) {
+        dummyNum = '0';
+        secondNum = dummyNum;
+        console.log('Second Dummy Number: ' + dummyNum);
+        display.textContent = dummyNum;
+      } else {
+        console.log('Second Dummy Number: ' + dummyNum);
+
+        secondNum = dummyNum;
+        console.log('New Number: ' + secondNum);
+        display.textContent = secondNum;
+      }
     }
   } else {
     //reduce the firstNum variable by 1 character
@@ -74,21 +155,6 @@ backspace.addEventListener('click', e => {
     }
   }
   //display.textContent = usrInput;
-});
-
-// Clears input
-clear.addEventListener('click', e => {
-  console.log('The display has been cleared.');
-  display.textContent = '';
-  op = '';
-  usrInput = '';
-  firstNum = '';
-  secondNum = '';
-  gotDecimal = false;
-  dot.removeAttribute('disabled');
-  dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
-  display_font.setAttribute('style', `${'font-size: 8ch;'}`);
-  gotOperator = false;
 });
 
 // Calculates a math problem
@@ -166,6 +232,11 @@ digits.forEach(button => {
       if (gotOperator === true) {
         secondNum += usrInput;
         console.log('The second number is: ' + secondNum);
+        equals.removeAttribute('disabled');
+        equals.setAttribute(
+          'style',
+          `${'background-color: var(--operator-keypad_1);'}`,
+        );
       } else {
         firstNum += usrInput;
         if (gotDecimal === true) {
@@ -210,14 +281,19 @@ function multiply(num1, num2) {
 
 // Division
 function divide(num1, num2) {
+  let answer;
+  let decimal = /^[-+]?[0-9]+\.[0-9]+$/;
   if (num1 === 0 || num2 === 0) {
     display_font.setAttribute('style', `${'font-size: 4ch;'}`);
     let emessage = (display.textContent = "YOU CAN'T DO THAT!!!");
     return emessage;
-  } else if (gotDecimal === true) {
-    return (num1 / num2).toFixed(2);
   } else {
-    return num1 / num2;
+    answer = num1 / num2;
+    if (String(answer).match(decimal)) {
+      return answer.toFixed(2);
+    } else {
+      return num1 / num2;
+    }
   }
 }
 // Operation
