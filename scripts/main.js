@@ -32,6 +32,10 @@ const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
 const dot = document.querySelector('#decimal-key');
 
+// Disables the equals key from the start until conditions are met (2 numbers and at least 1 operator)
+equals.setAttribute('disabled', 'true');
+equals.setAttribute('style', `${'background-color: var(--keypad_2);'}`);
+
 // TODO:
 // String several numbers and operators together in one statement and evaluate it.
 // Prevent equals key from being pressed until 2 numbers and at least one operator are entered.
