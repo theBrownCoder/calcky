@@ -221,18 +221,28 @@ digits.forEach(button => {
           console.log('The operator is: ' + op);
           break;
         case '.':
-          display.textContent += '.';
-          gotDecimal = true;
-          console.log('The decimal key has been clicked.');
-          if (gotOperator === true) {
-            secondNum += usrInput;
+          if (gotDecimal === true) {
+            dot.setAttribute('disabled', 'true');
+            dot.setAttribute(
+              'style',
+              `${'background-color: var(--clear-key_2);'}`,
+            );
           } else {
-            firstNum += usrInput;
+            display.textContent += '.';
+            gotDecimal = true;
+            console.log('The decimal key has been clicked.');
+
+            if (gotOperator === true) {
+              secondNum += usrInput;
+            } else {
+              firstNum += usrInput;
+            }
           }
           break;
       }
     } else {
       display.textContent += usrInput;
+
       if (gotOperator === true) {
         secondNum += usrInput;
         console.log('The second number is: ' + secondNum);
