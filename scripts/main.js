@@ -83,6 +83,7 @@ backspace.addEventListener('click', e => {
           display.textContent = dummyNum;
           console.log(display.textContent);
           break;
+
         case '-':
           gotOperator = false;
           op = '';
@@ -104,6 +105,7 @@ backspace.addEventListener('click', e => {
           display.textContent = dummyNum;
           console.log(display.textContent);
           break;
+
         case '/':
           gotOperator = false;
           op = '';
@@ -117,6 +119,11 @@ backspace.addEventListener('click', e => {
 
         case '.':
           gotDecimal = false;
+          dot.setAttribute(
+            'style',
+            `${'background-color: var(--default-button);'}`,
+          );
+          dot.removeAttribute('disabled');
           dummyNum = display.textContent.slice(
             0,
             display.textContent.length - 1,
@@ -158,7 +165,6 @@ backspace.addEventListener('click', e => {
       display.textContent = firstNum;
     }
   }
-  //display.textContent = usrInput;
 });
 
 // Calculates a math problem
@@ -170,6 +176,8 @@ equals.addEventListener('click', e => {
   dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
   dot.removeAttribute('disabled');
 });
+
+// Analyzes each numeric pad keypress
 digits.forEach(button => {
   button.addEventListener('click', e => {
     checkOutputLength();
@@ -180,6 +188,7 @@ digits.forEach(button => {
           display.textContent += '+';
           op = '+';
           gotOperator = true;
+          gotDecimal = false;
           dot.setAttribute(
             'style',
             `${'background-color: var(--default-button);'}`,
@@ -191,6 +200,7 @@ digits.forEach(button => {
           display.textContent += '*';
           op = '*';
           gotOperator = true;
+          gotDecimal = false;
           dot.setAttribute(
             'style',
             `${'background-color: var(--default-button);'}`,
@@ -202,6 +212,7 @@ digits.forEach(button => {
           display.textContent += '-';
           op = '-';
           gotOperator = true;
+          gotDecimal = false;
           dot.setAttribute(
             'style',
             `${'background-color: var(--default-button);'}`,
@@ -213,6 +224,7 @@ digits.forEach(button => {
           display.textContent += '/';
           op = '/';
           gotOperator = true;
+          gotDecimal = false;
           dot.setAttribute(
             'style',
             `${'background-color: var(--default-button);'}`,
@@ -228,10 +240,9 @@ digits.forEach(button => {
               `${'background-color: var(--clear-key_2);'}`,
             );
           } else {
-            display.textContent += '.';
             gotDecimal = true;
+            display.textContent += '.';
             console.log('The decimal key has been clicked.');
-
             if (gotOperator === true) {
               secondNum += usrInput;
             } else {
@@ -242,7 +253,6 @@ digits.forEach(button => {
       }
     } else {
       display.textContent += usrInput;
-
       if (gotOperator === true) {
         secondNum += usrInput;
         console.log('The second number is: ' + secondNum);
@@ -310,6 +320,7 @@ function divide(num1, num2) {
     }
   }
 }
+
 // Operation
 function operate(num1, op, num2) {
   switch (op) {
@@ -370,6 +381,7 @@ function operate(num1, op, num2) {
   firstNum = display.textContent;
 }
 
+// Check length of answer to allow it to fit in the display
 function checkAnswerLength() {
   if (answer.length > 9) {
     display_font.setAttribute('style', `${'font-size: 10ch;'}`);
@@ -382,6 +394,7 @@ function checkAnswerLength() {
   }
 }
 
+// Check length of the display text to allow it to fit the display properly
 function checkOutputLength() {
   if (display.textContent.length > 9) {
     display_font.setAttribute('style', `${'font-size: 10ch;'}`);
