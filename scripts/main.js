@@ -23,12 +23,11 @@ let usrInput = '';
 let op = '';
 let gotOperator = false;
 let gotDecimal = false;
-let backedOut = false;
 
 const display = document.querySelector('#input-span');
 const display_font = document.querySelector('#input-text-area');
 const clear = document.querySelector('#data-input-clear-key');
-const back = document.querySelector('#data-input-backspace-key');
+const backspace = document.querySelector('#data-input-backspace-key');
 const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
 const dot = document.querySelector('#decimal-key');
@@ -37,14 +36,44 @@ const dot = document.querySelector('#decimal-key');
 // String several numbers and operators together in one statement and evaluate it.
 // Prevent equals key from being pressed until 2 numbers and at least one operator are entered.
 // Fix fixed decimal output to occur only when a float is the answer.
-// Fix decimal key to allow for only one decimal per numbers.
+// Fix decimal key to allow for only one decimal per number.
 // Add a backspace key to allow the user to delete single or multiple numbers from the input field.
 // Add keyboard support
 
 // Deletes one or multiple user input characters
-back.addEventListener('click', e => {
+backspace.addEventListener('click', e => {
   console.log('The backspace key has been pressed');
-  backedOut = true;
+  // check for operator first,
+  if (gotOperator === true) {
+    //reduce the secondNum variable by 1 character
+    let dummyNum = secondNum.slice(0, secondNum.length - 1);
+    if (secondNum.length === 1) {
+      dummyNum = '0';
+      secondNum = dummyNum;
+      console.log('Second Dummy Number: ' + dummyNum);
+      display.textContent = dummyNum;
+    } else {
+      console.log('Second Dummy Number: ' + dummyNum);
+
+      secondNum = dummyNum;
+      console.log('New Number: ' + secondNum);
+      display.textContent = secondNum;
+    }
+  } else {
+    //reduce the firstNum variable by 1 character
+    let dummyNum = firstNum.slice(0, firstNum.length - 1);
+    if (firstNum.length === 1) {
+      dummyNum = '0';
+      firstNum = dummyNum;
+      console.log('First Dummy Number: ' + dummyNum);
+      display.textContent = dummyNum;
+    } else {
+      firstNum = dummyNum;
+      console.log('New First Number: ' + firstNum);
+      display.textContent = firstNum;
+    }
+  }
+  //display.textContent = usrInput;
 });
 
 // Clears input
@@ -154,17 +183,29 @@ digits.forEach(button => {
 
 // Addition
 function add(num1, num2) {
-  return (num1 + num2).toFixed(2);
+  if (gotDecimal === true) {
+    return (num1 + num2).toFixed(2);
+  } else {
+    return num1 + num2;
+  }
 }
 
 // Subtraction
 function subtract(num1, num2) {
-  return (num1 - num2).toFixed(2);
+  if (gotDecimal === true) {
+    return (num1 - num2).toFixed(2);
+  } else {
+    return num1 - num2;
+  }
 }
 
 // Multiplication
 function multiply(num1, num2) {
-  return (num1 * num2).toFixed(2);
+  if (gotDecimal === true) {
+    return (num1 * num2).toFixed(2);
+  } else {
+    return num1 * num2;
+  }
 }
 
 // Division
@@ -173,8 +214,10 @@ function divide(num1, num2) {
     display_font.setAttribute('style', `${'font-size: 4ch;'}`);
     let emessage = (display.textContent = "YOU CAN'T DO THAT!!!");
     return emessage;
-  } else {
+  } else if (gotDecimal === true) {
     return (num1 / num2).toFixed(2);
+  } else {
+    return num1 / num2;
   }
 }
 // Operation
