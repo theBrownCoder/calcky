@@ -31,6 +31,7 @@ const backspace = document.querySelector('#data-input-backspace-key');
 const equals = document.querySelector('#equals-key');
 const digits = document.querySelectorAll('.numpad-button');
 const dot = document.querySelector('#decimal-key');
+const key = window.addEventListener('keypress', checkKeyPress, true);
 
 // Disables the equals key from the start until conditions are met (2 numbers and at least 1 operator)
 equals.setAttribute('disabled', 'true');
@@ -53,6 +54,7 @@ clear.addEventListener('click', e => {
   gotDecimal = false;
   dot.removeAttribute('disabled');
   dot.setAttribute('style', `${'background-color: var(--default-button);'}`);
+  dot.setAttribute('hover', `${'background-color: var(--clear-key_2);'}`);
   display_font.setAttribute('style', `${'font-size: 12ch;'}`);
   gotOperator = false;
 });
@@ -160,7 +162,6 @@ backspace.addEventListener('click', e => {
     }
   }
 });
-
 // Calculates a math problem
 equals.addEventListener('click', e => {
   checkOutputLength();
@@ -398,5 +399,145 @@ function checkOutputLength() {
   }
   if (display.textContent.length > 20) {
     display_font.setAttribute('style', `${'font-size: 6ch;'}`);
+  }
+}
+
+function checkKeyPress(key) {
+  let cd = key.code;
+  switch (cd) {
+    //0
+    case 'Numpad0':
+      display.textContent += '0';
+      break;
+    case 'Digit0':
+      display.textContent += '0';
+      break;
+
+    //1
+    case 'Numpad1':
+      display.textContent += '1';
+      break;
+    case 'Digit1':
+      display.textContent += '1';
+      break;
+
+    //2
+    case 'Numpad2':
+      display.textContent += '2';
+      break;
+    case 'Digit2':
+      display.textContent += '2';
+      break;
+
+    //3
+    case 'Numpad3':
+      display.textContent += '3';
+      break;
+    case 'Digit3':
+      display.textContent += '3';
+      break;
+
+    //4
+    case 'Numpad4':
+      display.textContent += '4';
+      break;
+    case 'Digit4':
+      display.textContent += '4';
+      break;
+
+    //5
+    case 'Numpad5':
+      display.textContent += '5';
+      break;
+    case 'Digit5':
+      display.textContent += '5';
+      break;
+
+    //6
+    case 'Numpad6':
+      display.textContent += '6';
+      break;
+    case 'Digit6':
+      display.textContent += '6';
+      break;
+
+    //7
+    case 'Numpad7':
+      display.textContent += '7';
+      break;
+    case 'Digit7':
+      display.textContent += '7';
+      break;
+
+    //8
+    case 'Numpad8':
+      display.textContent += '8';
+      break;
+    case 'Digit8':
+      display.textContent += '8';
+      break;
+
+    //9
+    case 'Numpad9':
+      display.textContent += '9';
+      break;
+    case 'Digit9':
+      display.textContent += '9';
+      break;
+
+    //"/"
+    case 'NumpadDivide':
+      display.textContent += '/';
+      break;
+    case 'Slash':
+      display.textContent += '/';
+      break;
+
+    //"*"
+    case 'NumpadMultiply':
+      display.textContent += '*';
+      break;
+    case '65':
+      display.textContent += '*';
+      break;
+
+    //"-"
+    case 'NumpadSubtract':
+      display.textContent += '-';
+      break;
+    case 'Minus':
+      display.textContent += '-';
+      break;
+
+    //"+"
+    case 'NumpadAdd':
+      display.textContent += '+';
+      break;
+    case '61':
+      display.textContent += '+';
+      break;
+
+    //"Enter"
+    case 'NumpadEnter':
+      checkOutputLength();
+      console.log('About to operate...');
+      console.log('Equation: ' + firstNum + ' ' + op + ' ' + secondNum);
+      operate(parseFloat(firstNum), op, parseFloat(secondNum));
+      dot.setAttribute(
+        'style',
+        `${'background-color: var(--default-button);'}`,
+      );
+      dot.removeAttribute('disabled');
+      break;
+
+    case 'NumpadDecimal':
+      display.textContent += '.';
+      break;
+
+    case 'Backspace':
+      break;
+    // Default
+    default:
+      console.log('Error. Key not found.');
   }
 }
